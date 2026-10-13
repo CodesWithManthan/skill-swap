@@ -2,196 +2,195 @@
 
 ### Learn from your peers. Share what you know. Grow together.
 
-SkillSwap is a peer-to-peer skill exchange platform designed to connect college students with people from similar academic backgrounds, fields, and age groups so they can learn from one another through collaborative sessions.
+SkillSwap is a peer-to-peer skill exchange platform designed to help college students connect with fellow learners from similar academic backgrounds, fields, and age groups to share knowledge and learn practical skills from one another.
 
-Instead of relying only on traditional courses, SkillSwap encourages students to discover skills, connect with fellow learners, and exchange practical knowledge.
+Instead of relying only on traditional courses, SkillSwap encourages students to discover skills, explore other learners' profiles, and initiate collaborative learning sessions.
 
-> **Project Type:** Academic End-Semester Project | MVP
+**Project Type:** Academic End-Semester Project · MVP
 
 ---
 
 ## 📌 Overview
 
-Learning a new skill is easier when you have someone to learn with.
+Everyone has something to teach, and everyone has something to learn.
 
-Students often have valuable skills but lack an easy way to find peers who can teach them something new in return. SkillSwap aims to bridge this gap by creating a platform where students can explore skills, discover other learners, and initiate skill exchange sessions.
+Students often develop useful skills but struggle to find peers who can help them learn something new. SkillSwap aims to make peer learning easier by providing a platform where students can explore skills, discover other learners, and exchange knowledge.
 
-The goal is simple: **everyone has something to teach, and everyone has something to learn.**
+The goal is to build a community where learning is collaborative rather than one-sided.
 
 ## ✨ Features
 
-- **🔐 User Authentication**  
-  Sign up and sign in using Firebase Authentication.
+- **User Authentication:** Sign up and sign in using Firebase Authentication with email and password.
+- **Explore Skills:** Browse available skills and discover learning opportunities.
+- **Skill Categories:** Explore skills through organized categories.
+- **User Profiles:** View other learners' profiles and skills.
+- **Skill Exchange Requests:** Initiate requests to exchange skills with other users.
+- **Quick Sessions:** Access a quick way to initiate a learning interaction.
+- **Request Management:** View sent requests, received requests, and active requests or sessions.
 
-- **🔎 Explore Skills**  
-  Browse available skills and discover learning opportunities.
-
-- **🗂️ Skill Categories**  
-  Explore skills through organized categories.
-
-- **👤 User Profiles**  
-  View profiles and learn about other users and their skills.
-
-- **🤝 Skill Exchange Requests**  
-  Initiate requests to learn from or exchange skills with other users.
-
-- **⚡ Quick Sessions**  
-  Provide a quick way to initiate a learning interaction.
-
-- **📋 Request Management**  
-  View sent requests, received requests, and active sessions or requests.
-
-*Note: Features and workflows may differ between the current MVP and the planned final product. See the implementation and project setup for the current state.*
+*The project is an MVP. Feature availability depends on the current implementation.*
 
 ## 🛠️ Tech Stack
 
 | Technology | Purpose |
 |---|---|
-| Flutter | Cross-platform mobile application |
-| Dart | Frontend development |
-| Firebase Authentication | User authentication |
-| Cloud Firestore / Firebase Storage | Firebase services used by the app, where configured |
-| Backend API | Application logic and data access |
+| Flutter | Mobile application development |
+| Dart | Mobile app programming language |
+| Firebase Authentication | Email/password authentication |
+| Node.js | Backend runtime |
+| Express.js | Backend API framework |
 | PostgreSQL | Relational database |
-| Cloudflare Tunnel | Exposing the local API for development and testing |
+| Cloudflare Tunnel | Temporary remote access to the local API |
+| Git and GitHub | Version control and project hosting |
 
-**Backend framework:** To be confirmed.
+Other Firebase services, if any, should be added after confirming their use in the current implementation.
 
-## 🏗️ Architecture
-
-The application uses a frontend, backend, and database architecture.
+## 🏗️ System Architecture
 
 ```text
-┌─────────────────────────┐
-│     Flutter App         │
-│     (Dart / UI)         │
-└────────────┬────────────┘
-             │
-             │ HTTP API Requests
-             ▼
-┌─────────────────────────┐
-│   Cloudflare Tunnel     │
-│   (Development Access)  │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│      Backend API        │
-│   localhost:5000        │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│      PostgreSQL         │
-│       Database          │
-└─────────────────────────┘
+┌─────────────────────────────┐
+│        Flutter App          │
+│        (Dart / UI)           │
+└──────────────┬──────────────┘
+               │
+               │ HTTP API Requests
+               ▼
+┌─────────────────────────────┐
+│      Cloudflare Tunnel      │
+│   (Optional Development)    │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│       Express.js API        │
+│       Node.js Runtime       │
+│       Local Port: 5000      │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│         PostgreSQL          │
+└─────────────────────────────┘
+
+Firebase Authentication
+provides the app's authentication flow.
 ```
 
-Cloudflare Tunnel is used to expose the locally running backend API when remote access is needed. It does not host the backend or database itself.
+The Flutter frontend communicates with the backend through HTTP API requests. The backend uses PostgreSQL for relational data storage.
 
-Firebase Authentication is used separately for the app's authentication flow.
+Cloudflare Tunnel can expose the locally running API for remote development and testing. It is optional and is not a permanent production hosting solution.
 
 ## 📁 Project Structure
 
-The repository contains the Flutter application and its backend in one place.
+The repository contains the Flutter frontend and backend in one project.
 
 ```text
 SkillSwap/
-├── android/              # Android platform configuration
-├── assets/               # Application assets, if present
-├── lib/                  # Flutter application source
-├── test/                 # Application tests, if present
-├── backend/              # Backend API source
-├── pubspec.yaml          # Flutter dependencies
+├── lib/                 # Flutter application source
+├── android/             # Android platform configuration
+├── assets/              # Application assets, if present
+├── test/                # Flutter tests, if present
+├── backend/             # Node.js / Express backend
+├── pubspec.yaml         # Flutter dependencies
 ├── .gitignore
 └── README.md
 ```
 
-*Folder names are illustrative. Update this tree to match the actual repository.*
+This is a representative structure. Adjust folder names to match the actual repository.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-Install the following tools before running the project:
-
-- [Flutter SDK](https://docs.flutter.dev/get-started/install)
-- [Android Studio](https://developer.android.com/studio)
-- [Git](https://git-scm.com/)
-- [PostgreSQL](https://www.postgresql.org/download/)
-- The runtime and dependencies required by the backend
+- Flutter SDK
+- Android Studio
+- Node.js and npm
+- PostgreSQL
 - A configured Firebase project
+- Cloudflare Tunnel, if remote backend access is needed
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/SkillSwap.git
+git clone https://github.com/CodesWithManthan/skill-swap
 cd SkillSwap
 ```
 
-Replace `YOUR_USERNAME` with the repository owner's GitHub username.
+### 2. Set Up the Flutter Frontend
 
-### 2. Set Up the Flutter Application
-
-Install the Flutter dependencies:
+Install Flutter dependencies:
 
 ```bash
 flutter pub get
 ```
 
-Configure the Firebase project using the appropriate Firebase configuration for the application.
+Configure Firebase using the configuration required by the project.
 
-Open the project in Android Studio, connect an emulator or Android device, and run:
+Start an Android emulator or connect a compatible device, then run:
 
 ```bash
 flutter run
 ```
 
+Ensure the app's API base URL points to the correct backend address for your environment.
+
 ### 3. Set Up the Backend
 
-Navigate to the backend directory:
+Open a terminal in the backend directory:
 
 ```bash
 cd backend
 ```
 
-Install the dependencies using the package manager appropriate to the backend framework.
+Install dependencies:
 
-Configure the required environment variables, including the database connection settings. Use a local `.env` file if that is how the backend is configured.
-
-Start PostgreSQL and ensure the required database and schema are available.
-
-**Backend framework, dependency installation command, database initialization instructions, and startup command must be documented here once confirmed.**
-
-The backend is expected to be accessible locally at:
-
-```text
-http://localhost:5000
+```bash
+npm install
 ```
 
-This address is the backend's local development endpoint, not a permanent public URL.
+If the repository contains a valid `package-lock.json`, you can use `npm ci` for a clean, reproducible dependency installation.
 
-### 4. Configure Cloudflare Tunnel (Optional)
+Configure the environment variables required by the backend. For example, database connection settings may be supplied through a local `.env` file if the application is configured to use one.
 
-For remote device testing, a Cloudflare Quick Tunnel can expose the locally running backend.
+Do not commit real credentials or secret environment files.
 
-Start the backend first, then run:
+Ensure PostgreSQL is running and the required database and schema have been configured.
+
+### 4. Start the Backend
+
+Run:
+
+```bash
+npm run dev
+```
+
+This command runs the `dev` script defined in the backend's `package.json`.
+
+For example, the script might use `nodemon` to restart the server when source files change. The actual command depends on the project's configuration.
+
+The backend is expected to run locally on port `5000` in the current development setup.
+
+**Note:** The exact entry-point file, database initialization command, and required environment variables depend on the backend implementation.
+
+### 5. Expose the Backend Using Cloudflare Tunnel (Optional)
+
+For remote device testing, first start the backend, then open a separate terminal and run:
 
 ```bash
 cloudflared tunnel --url http://localhost:5000
 ```
 
-Cloudflare will provide a temporary public URL.
+Cloudflare Tunnel will provide a temporary public URL that can forward requests to the local API.
 
-Configure the Flutter application's API base URL to use that URL when remote access is required.
+Use the generated URL as the Flutter app's API base URL when remote access is required.
 
-**Important:** Quick Tunnel URLs are temporary and may change when a new tunnel is started. Do not hardcode a temporary URL as the production endpoint.
+Quick Tunnel URLs can change when a new tunnel is started. Do not treat a temporary development URL as a permanent production endpoint.
 
-For local testing, configure the app to use the appropriate local development address for the device or emulator.
+For local Android emulator testing, ensure the app uses an address that can reach the host machine. The emulator's `localhost` is not the same as your computer's `localhost`.
 
 ## 🔌 API Endpoints
 
-The following routes have been used during development. Confirm the current backend implementation before treating this list as the final API contract.
+The following routes have been used during development. Confirm the current Express route definitions before treating this table as a complete API specification.
 
 | Endpoint | Purpose |
 |---|---|
@@ -201,44 +200,38 @@ The following routes have been used during development. Confirm the current back
 | `GET /api/v1/requests/incoming/1` | Retrieve incoming requests |
 | `GET /api/v1/requests/active/1` | Retrieve active requests |
 
-The example user ID `1` is illustrative of the development routes. Replace it with the appropriate ID when testing other users.
+The user ID `1` in these examples is illustrative of the development routes. Request methods, response formats, and authentication requirements should be documented according to the actual backend implementation.
 
-Document the remaining request methods, payloads, responses, and authentication requirements alongside the final API implementation.
+## 🔐 Security
 
-## 🔒 Security Notes
+- Never commit database passwords, secret environment files, or private keys.
+- Keep sensitive configuration in environment variables.
+- Configure Firebase security rules appropriately.
+- Validate input and enforce authorization on the backend.
+- Avoid publishing private user information or database dumps.
+- Use an appropriately secured deployment for production rather than relying on a development tunnel.
 
-- Never commit real database credentials, private API keys, or secret environment files.
-- Keep local environment variables out of version control.
-- Use appropriate Firebase security rules.
-- Validate and authorize requests on the backend.
-- Use a stable, appropriately secured deployment for production rather than relying on a development tunnel.
-- Avoid publishing real user data or private database exports.
+## 🛣️ Future Improvements
 
-## 🗺️ Future Improvements
+Potential areas for future development include:
 
-Potential improvements for future versions include:
-
-- Smarter matching between learners and skill providers.
+- Better matching between learners and skill providers.
 - Session scheduling and availability management.
 - In-app messaging and notifications.
-- More detailed profiles and skill verification.
-- Improved request lifecycle management.
-- Production deployment and API security improvements.
+- Improved profiles and skill verification.
+- More complete session lifecycle management.
+- Production deployment and stronger API security.
 
-These are possible future enhancements, not claims about features already implemented.
+These are potential enhancements, not claims that they are already implemented.
 
 ## 🎓 Project Information
 
-**Project:** SkillSwap  
-**Type:** Academic End-Semester Project  
-**Domain:** Mobile Application Development / Peer-to-Peer Learning
+**Project Name:** SkillSwap  
+**Project Type:** Academic End-Semester Project  
+**Domain:** Mobile Application Development · Peer-to-Peer Learning
 
 ## 👨‍💻 Author
 
-**[Your Name]**
+**Challa Manthan**
 
-Built as an academic project exploring mobile application development, backend integration, database management, and peer-to-peer learning.
-
-## 📄 License
-
-A license has not yet been selected. Add an appropriate license file if you intend to distribute the project under explicit open-source terms.
+Developed as an academic project exploring mobile application development, backend API integration, relational database management, and collaborative learning.
